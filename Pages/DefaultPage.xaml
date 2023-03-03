@@ -9,15 +9,14 @@
       Title="DefaultPage">
     <Grid Background="#1A202C">
         <Grid>
-            <DataGrid Background="#1A202C" Name="DGridHotels" AutoGenerateColumns="False" SelectionChanged="DGridHotels_SelectionChanged">
+            <DataGrid Background="#1A202C" Name="Dgrid" AutoGenerateColumns="False" SelectionChanged="DGridHotels_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn  Foreground="White" Header="ФИО" Binding="{Binding FIO}" Width="*"/>
-                    <DataGridTextColumn  Foreground="White" Header="Возраст" Binding="{Binding age}" Width="100"/>
-                    <DataGridTextColumn   Foreground="White" Header="Группа" Binding="{Binding Groups.group_name}" Width="100"/>
-                    <DataGridTextColumn   Foreground="White" Header="Группа" Binding="{Binding Groups.group_name}" Width="100"/>
-                    <DataGridTextColumn   Foreground="White" Header="Пол" Binding="{Binding gender}" Width="150"/>
-                    <DataGridTextColumn  Foreground="White" Header="Номер зачетки" Binding="{Binding n_zachetki}" Width="100"/>
-                <DataGridTemplateColumn Width="auto">
+                    <DataGridTextColumn   Header="Дата выдачи" Binding="{Binding Datato}" Width="*"/>
+                    <DataGridTextColumn   Header="Дата замены" Binding="{Binding Datatrade}" Width="100"/>
+                    <DataGridTextColumn    Header="Сумма" Binding="{Binding Price}" Width="100"/>
+                    <DataGridTextColumn   Header="Одежда" Binding="{Binding ClothesIdclothesNavigation.Clothe1}" Width="100"/>
+                    <DataGridTextColumn    Header="Работник" Binding="{Binding EmployeesIdEmployeesNavigation.Fio}" Width="150"/>
+                    <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="Редактировать" Name ="BtnEdit" Click="BtnEdit_Click"/>
@@ -28,6 +27,8 @@
             </DataGrid.Columns>
 
         </DataGrid>
+
     </Grid>
+        <TextBlock  Margin="20" Foreground="White" FontSize="50" x:Name="Nn" Text="0"/>
     </Grid>
 </Page>

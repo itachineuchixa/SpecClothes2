@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SpecClothes.Database.DatabaseClasses;
 
 namespace SpecClothes
 {
@@ -23,6 +24,14 @@ namespace SpecClothes
         public DefaultPage()
         {
             InitializeComponent();
+            List<Delivery> del = SpecclotheContext.GetContext().Deliveries.ToList();
+            foreach (var d in del)
+            {
+                d.ClothesIdclothesNavigation = SpecclotheContext.GetContext().Clothes.Where(x => x.Idclothes == d.ClothesIdclothes).ToList()[0];
+                d.EmployeesIdEmployeesNavigation = SpecclotheContext.GetContext().Employees.Where(x => x.IdEmployees == d.EmployeesIdEmployees).ToList()[0];
+            }
+            Dgrid.ItemsSource = del;
+
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
