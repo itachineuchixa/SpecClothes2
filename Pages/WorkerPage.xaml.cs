@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpecClothes.Database.DatabaseClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace SpecClothes
         public WorkerPage()
         {
             InitializeComponent();
+            List<Employee> del = SpecclotheContext.GetContext().Employees.ToList();
+            foreach (var d in del)
+            {
+                d.PositionIdpositionNavigation = SpecclotheContext.GetContext().Positions.Where(x => x.Idposition == d.PositionIdposition).ToList()[0];
+                d.DepartmentsIddepartmentNavigation = SpecclotheContext.GetContext().Departments.Where(x => x.Iddepartment == d.DepartmentsIddepartment).ToList()[0];
+            }
+            DGrid.ItemsSource = del;
         }
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {

@@ -10,25 +10,24 @@
     <Grid Background="#1A202C">
         <Grid>
             <DataGrid Background="#1A202C" Name="Dgrid" AutoGenerateColumns="False" SelectionChanged="DGridHotels_SelectionChanged">
-            <DataGrid.Columns>
+                <DataGrid.Columns>
                     <DataGridTextColumn   Header="Дата выдачи" Binding="{Binding Datato}" Width="*"/>
                     <DataGridTextColumn   Header="Дата замены" Binding="{Binding Datatrade}" Width="100"/>
                     <DataGridTextColumn    Header="Сумма" Binding="{Binding Price}" Width="100"/>
                     <DataGridTextColumn   Header="Одежда" Binding="{Binding ClothesIdclothesNavigation.Clothe1}" Width="100"/>
                     <DataGridTextColumn    Header="Работник" Binding="{Binding EmployeesIdEmployeesNavigation.Fio}" Width="150"/>
                     <DataGridTemplateColumn Width="auto">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="Редактировать" Name ="BtnEdit" Click="BtnEdit_Click"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Редактировать" Name ="BtnEdit" Click="BtnEdit_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
 
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
 
-        </DataGrid>
+            </DataGrid>
 
-    </Grid>
-        <TextBlock  Margin="20" Foreground="White" FontSize="50" x:Name="Nn" Text="0"/>
+        </Grid>
     </Grid>
 </Page>

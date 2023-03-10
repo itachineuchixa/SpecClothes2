@@ -9,12 +9,11 @@
       Title="WorkerPage">
     <Grid Background="#1A202C">
         <Grid>
-            <DataGrid Background="#1A202C" Name="DGridHotels" AutoGenerateColumns="False" SelectionChanged="DGridHotels_SelectionChanged">
+            <DataGrid Background="#1A202C" Name="DGrid" AutoGenerateColumns="False" SelectionChanged="DGridHotels_SelectionChanged">
                 <DataGrid.Columns>
-                    <DataGridTextColumn  Foreground="White" Header="ФИО" Binding="{Binding FIO}" Width="*"/>
-                    <DataGridTextColumn  Foreground="White" Header="Возраст" Binding="{Binding age}" Width="100"/>
-                    <DataGridTextColumn   Foreground="White" Header="Цех" Binding="{Binding Groups.group_name}" Width="100"/>
-                    <DataGridTextColumn   Foreground="White" Header="Должность" Binding="{Binding Groups.group_name}" Width="100"/>
+                    <DataGridTextColumn    Header="ФИО" Binding="{Binding Fio}" Width="*"/>
+                    <DataGridTextColumn    Header="Цех" Binding="{Binding DepartmentsIddepartmentNavigation.Department1}" Width="100"/>
+                    <DataGridTextColumn    Header="Должность" Binding="{Binding PositionIdpositionNavigation.Posi}" Width="100"/>
                     <DataGridTemplateColumn Width="auto">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
