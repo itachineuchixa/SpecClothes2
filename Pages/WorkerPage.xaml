@@ -9,22 +9,32 @@
       Title="WorkerPage">
     <Grid Background="#1A202C">
         <Grid>
-            <DataGrid Background="#1A202C" Name="DGrid" AutoGenerateColumns="False" SelectionChanged="DGridHotels_SelectionChanged">
-                <DataGrid.Columns>
-                    <DataGridTextColumn    Header="ФИО" Binding="{Binding Fio}" Width="*"/>
-                    <DataGridTextColumn    Header="Цех" Binding="{Binding DepartmentsIddepartmentNavigation.Department1}" Width="100"/>
-                    <DataGridTextColumn    Header="Должность" Binding="{Binding PositionIdpositionNavigation.Posi}" Width="100"/>
-                    <DataGridTemplateColumn Width="auto">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Редактировать" Name ="BtnEdit" Click="BtnEdit_Click"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-
-            </DataGrid>
+            <ListView  Background="#1A202C" Foreground="GhostWhite" BorderBrush="Wheat" Name="DGrid"  SelectionChanged="DGridHotels_SelectionChanged">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="Background" Value="#1A202C"/>
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="LightBlue"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightBlue"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn    Header="ФИО" DisplayMemberBinding="{Binding Fio}"/>
+                        <GridViewColumn    Header="Цех" DisplayMemberBinding="{Binding DepartmentsIddepartmentNavigation.Department1}" Width="100"/>
+                        <GridViewColumn    Header="Должность" DisplayMemberBinding="{Binding PositionIdpositionNavigation.Posi}" Width="100"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
     </Grid>
 </Page>
