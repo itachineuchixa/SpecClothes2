@@ -12,6 +12,7 @@
             <ListView  Background="#1A202C" Foreground="GhostWhite" BorderBrush="Wheat" Name="DGrid"  SelectionChanged="DGridHotels_SelectionChanged">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="FontSize" Value="12"/>
                         <Setter Property="Background" Value="#1A202C"/>
                         <Setter Property="BorderBrush" Value="White"/>
                         <Setter Property="BorderThickness" Value="0"/>
@@ -30,8 +31,15 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn    Header="ФИО" DisplayMemberBinding="{Binding Fio}"/>
-                        <GridViewColumn    Header="Цех" DisplayMemberBinding="{Binding DepartmentsIddepartmentNavigation.Department1}" Width="100"/>
-                        <GridViewColumn    Header="Должность" DisplayMemberBinding="{Binding PositionIdpositionNavigation.Posi}" Width="100"/>
+                        <GridViewColumn    Header="Цех" DisplayMemberBinding="{Binding DepartmentsIddepartmentNavigation.Department1}" Width="Auto"/>
+                        <GridViewColumn    Header="Должность" DisplayMemberBinding="{Binding PositionIdpositionNavigation.Posi}" Width="Auto"/>
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Редактировать" Width="Auto" Name ="BtnEdit" Click="BtnEdit_Click"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

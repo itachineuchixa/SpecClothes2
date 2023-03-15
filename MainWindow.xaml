@@ -19,11 +19,11 @@
                 <Image Source="pack://application:,,,/Resources/logo.png" Margin="1" Width="60" Height="50"  />
                 <Image Source="pack://application:,,,/Resources/Image1.png" Margin="5" Width="60" Height="50" MouseLeftButtonDown="Gotohomepage" />
                 <Image Source="pack://application:,,,/Resources/builder-22_icon-icons.com_60368.png"  Margin="10" Width="40" Height="50" MouseLeftButtonDown="GotoWorkerPage"/>
-                <Image Source="pack://application:,,,/Resources/1455554770_line-74_icon-icons.com_53368.png" Width="40" Height="50" Margin="10"/>
+                <Image Source="pack://application:,,,/Resources/1455554770_line-74_icon-icons.com_53368.png" Width="40" Height="50" Margin="10" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
             </StackPanel>
         </Border>
         <StackPanel Grid.Column="1">
-            <TextBlock Text="Выдача спец одежды"  FontWeight="Bold" FontSize="25" Foreground="GhostWhite"/>
+            <TextBlock Name="header" Text="Выдача спец одежды"  FontWeight="Bold" FontSize="25" Foreground="GhostWhite"/>
             <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Height="399" BorderBrush="Wheat" BorderThickness="1"/>
         </StackPanel>
     </Grid>

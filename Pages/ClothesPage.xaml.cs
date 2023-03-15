@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpecClothes.Database.DatabaseClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +13,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SpecClothes.Database.DatabaseClasses;
 
 namespace SpecClothes
 {
     /// <summary>
-    /// Логика взаимодействия для DefaultPage.xaml
+    /// Логика взаимодействия для ClothesPage.xaml
     /// </summary>
-    public partial class DefaultPage : Page
+    public partial class ClothesPage : Page
     {
-        public DefaultPage()
+        public ClothesPage()
         {
             InitializeComponent();
             List<Delivery> del = SpecclotheContext.GetContext().Deliveries.ToList();

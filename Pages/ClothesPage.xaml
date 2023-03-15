@@ -1,4 +1,4 @@
-﻿<Page x:Class="SpecClothes.DefaultPage"
+﻿<Page x:Class="SpecClothes.ClothesPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:SpecClothes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="DefaultPage">
+      Title="ClothesPage">
     <Grid Background="#1A202C">
         <Grid>
             <ListView  Background="#1A202C" Foreground="GhostWhite" BorderBrush="Wheat" Name="DGrid"  SelectionChanged="DGridHotels_SelectionChanged">
@@ -48,3 +48,4 @@
         </Grid>
     </Grid>
 </Page>
+

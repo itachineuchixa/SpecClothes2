@@ -31,12 +31,21 @@ namespace SpecClothes
         {
             MainFrame.Navigate(new DefaultPage());
             manager.MainFrame = MainFrame;
+            header.Text = "Выдача спец одежды";
         }
 
         private void GotoWorkerPage(object sender, MouseButtonEventArgs e)
         {
             MainFrame.Navigate(new WorkerPage());
             manager.MainFrame = MainFrame;
+            header.Text = "Список работников";
+        }
+
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame.Navigate(new ClothesPage());
+            manager.MainFrame = MainFrame;
+            header.Text = "Список одежды";
         }
     }
 }
