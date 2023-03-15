@@ -30,11 +30,10 @@
                 </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn   Header="Дата выдачи" DisplayMemberBinding="{Binding Datato}" Width="Auto" />
-                        <GridViewColumn   Header="Дата замены" DisplayMemberBinding="{Binding Datatrade}" Width="Auto"/>
-                        <GridViewColumn    Header="Сумма" DisplayMemberBinding="{Binding Price}" Width="Auto"/>
-                        <GridViewColumn   Header="Одежда" DisplayMemberBinding="{Binding ClothesIdclothesNavigation.Clothe1}" Width="Auto"/>
-                        <GridViewColumn    Header="Работник" DisplayMemberBinding="{Binding EmployeesIdEmployeesNavigation.Fio}" Width="Auto"/>
+                        <GridViewColumn   Header="Наименование" DisplayMemberBinding="{Binding Clothe1}" Width="Auto" />
+                        <GridViewColumn   Header="Цена" DisplayMemberBinding="{Binding Price}" Width="Auto"/>
+                        <GridViewColumn    Header="Срок годности" DisplayMemberBinding="{Binding Term}" Width="Auto"/>
+                        <GridViewColumn   Header="Вид одежды" DisplayMemberBinding="{Binding VariableIdVariableNavigation.Variable1}" Width="Auto"/>
                         <GridViewColumn>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>

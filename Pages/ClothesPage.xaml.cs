@@ -24,11 +24,10 @@ namespace SpecClothes
         public ClothesPage()
         {
             InitializeComponent();
-            List<Delivery> del = SpecclotheContext.GetContext().Deliveries.ToList();
+            List<Clothe> del = SpecclotheContext.GetContext().Clothes.ToList();
             foreach (var d in del)
             {
-                d.ClothesIdclothesNavigation = SpecclotheContext.GetContext().Clothes.Where(x => x.Idclothes == d.ClothesIdclothes).ToList()[0];
-                d.EmployeesIdEmployeesNavigation = SpecclotheContext.GetContext().Employees.Where(x => x.IdEmployees == d.EmployeesIdEmployees).ToList()[0];
+                d.VariableIdVariableNavigation = SpecclotheContext.GetContext().Variables.Where(x => x.IdVariable == d.VariableIdVariable).ToList()[0];
             }
             DGrid.ItemsSource = del;
 
