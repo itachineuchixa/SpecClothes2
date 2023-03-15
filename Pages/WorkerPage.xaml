@@ -8,6 +8,18 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="WorkerPage">
     <Grid Background="#1A202C">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Поиск по фамилии:" Foreground="White" FontSize="12" Height="30" Margin="5"/>
+            <TextBox Name="Search" Width="100" Height="30" Margin="5"/>
+            <TextBlock Text="Фильтрация по цеху:" Foreground="White" FontSize="12" Height="30" Margin="5"/>
+            <ComboBox Name="Combo" SelectedItem="Цехи" Margin="5" Width="60"/>
+            <Button Content="Добавить" Margin="5" Width="70" Foreground="White" FontWeight="Bold" Background="#9C2CF3" Height="30"/>
+            <Button Content="Удалить" Margin="5" Width="70" Foreground="White" FontWeight="Bold" Background="#9C2CF3" Height="30"/>
+        </StackPanel>
         <Grid>
             <ListView  Background="#1A202C" Foreground="GhostWhite" BorderBrush="Wheat" Name="DGrid"  SelectionChanged="DGridHotels_SelectionChanged">
                 <ListView.ItemContainerStyle>
@@ -36,7 +48,8 @@
                         <GridViewColumn>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="Редактировать" Width="Auto" Name ="BtnEdit" Click="BtnEdit_Click"/>
+                                    <Button Content="Редактировать" Foreground="White" FontWeight="ExtraLight" Background="#9C2CF3
+                                            " Name ="BtnEdit" Click="BtnEdit_Click"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

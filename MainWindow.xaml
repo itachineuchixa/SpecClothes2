@@ -24,7 +24,7 @@
         </Border>
         <StackPanel Grid.Column="1">
             <TextBlock Name="header" Text="Выдача спец одежды"  FontWeight="Bold" FontSize="25" Foreground="GhostWhite"/>
-            <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Height="399" BorderBrush="Wheat" BorderThickness="1"/>
+            <Frame NavigationUIVisibility="Hidden" Name="MainFrame" Height="399" BorderBrush="Wheat" BorderThickness="0"/>
         </StackPanel>
     </Grid>
 </Window>
