@@ -4,7 +4,69 @@
              xmlns:local="clr-namespace:SpecClothes"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-      
+
+
+
+
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Pink" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton x:Name="ToggleButton"
+BorderBrush="{TemplateBinding BorderBrush}"
+BorderThickness="{TemplateBinding BorderThickness}"
+Background="{TemplateBinding Background}"
+Height="{TemplateBinding Height}"
+Width="{TemplateBinding Width}"
+IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="60" />
+                                    </Grid.ColumnDefinitions>
+                                    <ContentPresenter />
+                                    <Path x:Name="Arrow"
+Grid.Column="1"
+Fill="Black"
+HorizontalAlignment="Right"
+VerticalAlignment="Top"
+Data="M 0 0 L 4 4 L 8 0 Z"/>
+                                </Grid>
+                            </ToggleButton>
+                            <Popup x:Name="Popup"
+AllowsTransparency="True"
+IsOpen="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+Placement="Bottom"
+Focusable="False">
+                                <Grid x:Name="DropDown"
+SnapsToDevicePixels="True"
+MinWidth="{TemplateBinding ActualWidth}"
+MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border x:Name="DropDownBorder"
+Background="#9C2CF3"
+BorderBrush="Black"
+BorderThickness="1"/>
+                                    <ScrollViewer Margin="4,6,4,6"
+SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+
         <Style TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>

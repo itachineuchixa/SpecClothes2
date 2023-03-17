@@ -13,6 +13,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Фильтрация по виду:" Foreground="White" FontSize="12" Height="30" Margin="5"/>
+            <ComboBox Name="Combo" Background="#9C2CF3" SelectedItem="Цехи" Margin="5" Height="30" Width="90" SelectionChanged="Combo_SelectionChanged"/>
             <Button Content="Добавить" Margin="5" Width="70" Foreground="White" FontWeight="Bold" Background="#9C2CF3" Height="30"/>
             <Button Content="Удалить" Margin="5" Width="70" Foreground="White" FontWeight="Bold" Background="#9C2CF3" Height="30"/>
         </StackPanel>
