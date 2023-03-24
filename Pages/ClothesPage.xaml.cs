@@ -33,37 +33,41 @@ namespace SpecClothes
             Combo.Items.Add("Виды");
             foreach (var item in SpecclotheContext.GetContext().Clothes.
      Select(x => x.VariableIdVariableNavigation.Variable1).Distinct().ToList())
-
-
+            {
                 Combo.Items.Add(item);
+            }
         }
 
 
         private void Combo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Combo.SelectedValue.ToString() == "Виды")
+            try
             {
-                List<Clothe> del = SpecclotheContext.GetContext().Clothes.ToList();
-                foreach (var d in del)
+                if (Combo.SelectedValue.ToString() == "Виды")
                 {
-                    d.VariableIdVariableNavigation = SpecclotheContext.GetContext().Variables.Where(x => x.IdVariable == d.VariableIdVariable).ToList()[0];
+                    List<Clothe> del = SpecclotheContext.GetContext().Clothes.ToList();
+                    foreach (var d in del)
+                    {
+                        d.VariableIdVariableNavigation = SpecclotheContext.GetContext().Variables.Where(x => x.IdVariable == d.VariableIdVariable).ToList()[0];
+                    }
+                    DGrid.ItemsSource = del;
+                    //TxbCountSearchItem.Text = dbISP19AEntities.GetContext().User.Count().ToString();
                 }
-                DGrid.ItemsSource = del;
-                //TxbCountSearchItem.Text = dbISP19AEntities.GetContext().User.Count().ToString();
-            }
-            else
-            {
-                List<Clothe> del = SpecclotheContext.GetContext().Clothes.ToList();
-                foreach (var d in del)
+                else
                 {
-                    d.VariableIdVariableNavigation = SpecclotheContext.GetContext().Variables.Where(x => x.IdVariable == d.VariableIdVariable).ToList()[0];
+                    List<Clothe> del = SpecclotheContext.GetContext().Clothes.ToList();
+                    foreach (var d in del)
+                    {
+                        d.VariableIdVariableNavigation = SpecclotheContext.GetContext().Variables.Where(x => x.IdVariable == d.VariableIdVariable).ToList()[0];
+                    }
+                    DGrid.ItemsSource = del;
+                    DGrid.ItemsSource = SpecclotheContext.GetContext().Clothes.
+                        Where(x => x.VariableIdVariableNavigation.Variable1 == Combo.SelectedValue.ToString()).ToList();
+                    //TxbCountSearchItem.Text = dbISP19AEntities.GetContext().User.
+                    //       Where(x => x.LastName == CmbFiltr.SelectedValue.ToString()).Count().ToString();
                 }
-                DGrid.ItemsSource = del;
-                DGrid.ItemsSource = SpecclotheContext.GetContext().Clothes.
-                    Where(x => x.VariableIdVariableNavigation.Variable1 == Combo.SelectedValue.ToString()).ToList();
-                //TxbCountSearchItem.Text = dbISP19AEntities.GetContext().User.
-                //       Where(x => x.LastName == CmbFiltr.SelectedValue.ToString()).Count().ToString();
             }
+            catch(Exception ex) { }
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
