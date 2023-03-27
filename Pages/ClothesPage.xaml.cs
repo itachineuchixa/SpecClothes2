@@ -72,7 +72,7 @@ namespace SpecClothes
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            manager.MainFrame.Navigate(new ClotheAddPage((sender as Button).DataContext as Clothe));
         }
 
         private void DGridHotels_SelectionChanged(object sender, SelectionChangedEventArgs e)
