@@ -9,6 +9,67 @@
       Title="WorkerAddPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="ФИО"
+                   Foreground="White"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Margin="5"/>
+        <TextBlock Text="Цех"
+                                      Foreground="White"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Margin="5"/>
+        <TextBlock Text="Должность"
+                                      Foreground="White"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   Grid.Row="2"
+                   Grid.Column="0"/>
+        <TextBox Name="TxtFirstName"
+                 Background="#9C2CF3"
+                 Foreground="White"
+                 Text="{Binding Fio}"
+                 Width="300"
+                 Grid.Row="0"
+                 Height="40"
+                   Grid.Column="1"/>
+        <ComboBox Name="CmbDep"
+                  
+                  Grid.Row="1"
+                  Grid.Column="1" Width="300" Background="#9C2CF3"
+                  SelectedValue="{Binding  DepartmentsIddepartment }"/>
+        <ComboBox Name="CmbPos"
+                  
+                  Grid.Row="2"
+                  Grid.Column="1" Width="300" Background="#9C2CF3"
+                  SelectedValue="{Binding PositionIdposition}"/>
+
+        <Button Content="Сохранить" 
+                 Background="#9C2CF3"
+                Foreground="White"
+                FontWeight="Bold"
+                Grid.ColumnSpan="2"
+                Grid.Row="5"
+                Width="150"
+                Height="30"
+                Name="BtnSave"
+                Click="BtnSave_Click"/>
+
     </Grid>
 </Page>

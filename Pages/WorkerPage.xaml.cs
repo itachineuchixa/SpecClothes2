@@ -31,10 +31,16 @@ namespace SpecClothes
                 d.DepartmentsIddepartmentNavigation = SpecclotheContext.GetContext().Departments.Where(x => x.Iddepartment == d.DepartmentsIddepartment).ToList()[0];
             }
             DGrid.ItemsSource = del;
+            Combo.Items.Add("Виды");
+            foreach (var item in SpecclotheContext.GetContext().Employees.
+     Select(x => x.DepartmentsIddepartmentNavigation.Department1).Distinct().ToList())
+            {
+                Combo.Items.Add(item);
+            }
         }
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            manager.MainFrame.Navigate(new WorkerAddPage((sender as Button).DataContext as Employee));
         }
 
         private void DGridHotels_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -42,5 +48,59 @@ namespace SpecClothes
 
         }
 
+        private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //поиск
+            string search = Search.Text;
+            if (Search.Text != null)
+            {
+                DGrid.ItemsSource = SpecclotheContext.GetContext().Employees.
+                    Where(x => x.Fio.Contains(search)
+                    || x.DepartmentsIddepartmentNavigation.Department1.Contains(search)
+                    || x.PositionIdpositionNavigation.Posi.Contains(search)
+                    || x.IdEmployees.ToString().Contains(search)).ToList();
+            }
+        }
+
+        private void Combo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (Combo.SelectedValue.ToString() == "Виды")
+                {
+                    List<Employee> del = SpecclotheContext.GetContext().Employees.ToList();
+                    foreach (var d in del)
+                    {
+                        d.DepartmentsIddepartmentNavigation = SpecclotheContext.GetContext().Departments.Where(x => x.Iddepartment == d.DepartmentsIddepartment).ToList()[0];
+                    }
+                    DGrid.ItemsSource = del;
+                    //TxbCountSearchItem.Text = dbISP19AEntities.GetContext().User.Count().ToString();
+                }
+                else
+                {
+                    List<Employee> del = SpecclotheContext.GetContext().Employees.ToList();
+                    foreach (var d in del)
+                    {
+                        d.DepartmentsIddepartmentNavigation = SpecclotheContext.GetContext().Departments.Where(x => x.Iddepartment == d.DepartmentsIddepartment).ToList()[0];
+                    }
+                    DGrid.ItemsSource = del;
+                    DGrid.ItemsSource = SpecclotheContext.GetContext().Employees.
+                        Where(x => x.DepartmentsIddepartmentNavigation.Department1 == Combo.SelectedValue.ToString()).ToList();
+                    //TxbCountSearchItem.Text = dbISP19AEntities.GetContext().User.
+                    //       Where(x => x.LastName == CmbFiltr.SelectedValue.ToString()).Count().ToString();
+                }
+            }
+            catch (Exception ex) { }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            manager.MainFrame.Navigate(new WorkerAddPage(null));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            manager.MainFrame.Navigate(new PositionPage());
+        }
     }
 }
