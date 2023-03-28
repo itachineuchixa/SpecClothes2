@@ -80,5 +80,35 @@ namespace SpecClothes
 
         }
 
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {// удаление нескольких пользователей
+            var usersForRemoving = DGrid.SelectedItems.Cast<Clothe>().ToList();
+            if (MessageBox.Show($"Удалить {usersForRemoving.Count()} записей?",
+                "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+
+                try
+                {
+                    SpecclotheContext.GetContext().Clothes.RemoveRange(usersForRemoving);
+                    SpecclotheContext.GetContext().SaveChanges();
+                    MessageBox.Show("Данные удалены");
+                    DGrid.ItemsSource = SpecclotheContext.GetContext().Clothes.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            manager.MainFrame.Navigate(new ClotheAddPage(null));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            manager.MainFrame.Navigate(new VariablePage());
+        }
     }
 }

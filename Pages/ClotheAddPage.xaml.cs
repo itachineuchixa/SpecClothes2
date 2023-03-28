@@ -25,14 +25,46 @@ namespace SpecClothes
         public ClotheAddPage(Clothe selectedclothe)
         {
             InitializeComponent();
-            CmbLogin.ItemsSource = dbISP19AEntities.GetContext().Account.ToList();
-            CmbLogin.SelectedValuePath = "ID";
-            CmbLogin.DisplayMemberPath = "Login";
+            CmbLogin.ItemsSource = SpecclotheContext.GetContext().Variables.ToList();
+            CmbLogin.SelectedValuePath = "IdVariable";
+            CmbLogin.DisplayMemberPath = "Variable1";
 
-            if (selectedUser != null)
-                _currentUser = selectedUser;
+            if (selectedclothe != null)
+                _currentclothe = selectedclothe;
             //создаем контекст
-            DataContext = _currentUser;
+            DataContext = _currentclothe;
+        }
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            StringBuilder error = new StringBuilder(); //объект для сообщения об ошибке
+
+            //проверка полей объекта
+            if (string.IsNullOrWhiteSpace(_currentclothe.Clothe1))
+                error.AppendLine("Укажите имя");
+            if (string.IsNullOrWhiteSpace(_currentclothe.Term.ToString()))
+                error.AppendLine("Укажите фамилию");
+            if (error.Length > 0)
+            {
+                MessageBox.Show(error.ToString());
+                return;
+            }
+            //если пользователь новый
+            if (_currentclothe.Idclothes == 0)
+                SpecclotheContext.GetContext().Clothes.Add(_currentclothe); //добавить в контекст
+            try
+            {
+                SpecclotheContext.GetContext().SaveChanges(); // сохранить изменения
+                                                             // dbISP19AEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                MessageBox.Show("Данные сохранены");
+                manager.MainFrame.Navigate(new ClothesPage());
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
     }
 }
