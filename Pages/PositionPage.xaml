@@ -8,7 +8,49 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PositionPage">
 
-    <Grid>
-        
+    <Grid Background="#1A202C">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Добавить" Margin="5" Width="70" Foreground="White" FontWeight="Bold" Background="#9C2CF3" Height="30" Click="Button_Click"/>
+            <Button Content="Удалить" Margin="5" Width="70" Foreground="White" FontWeight="Bold" Background="#9C2CF3" Height="30"/>
+        </StackPanel>
+        <Grid>
+            <ListView  Background="#1A202C" Foreground="GhostWhite" BorderBrush="Wheat" Name="DGrid"  SelectionChanged="DGridHotels_SelectionChanged">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="FontSize" Value="12"/>
+                        <Setter Property="Background" Value="#1A202C"/>
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="LightBlue"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightBlue"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn    Header="Цех" DisplayMemberBinding="{Binding Posi}" Width="Auto"/>
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Редактировать" Foreground="White" FontWeight="ExtraLight" Background="#9C2CF3
+                                            " Name ="BtnEdit" Click="BtnEdit_Click"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
     </Grid>
 </Page>

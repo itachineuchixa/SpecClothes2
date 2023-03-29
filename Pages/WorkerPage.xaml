@@ -17,8 +17,8 @@
             <TextBox Name="Search" TextChanged="TxtSearch_TextChanged" Width="100" Height="30" Margin="5"/>
             <TextBlock Text="Фильтрация по цеху:" Foreground="White" FontSize="12" Height="30" Margin="5"/>
             <ComboBox Name="Combo" SelectedItem="{Binding Selected}" Background="#9C2CF3" Margin="5" Width="Auto" SelectionChanged="Combo_SelectionChanged"/>
-            <Button Content="Цехи" Margin="5" Width="70" Foreground="White" FontWeight="Bold" Background="#9C2CF3" Height="30" Click="Button_Click"/>
-            <Button Content="Должности" Margin="5" Width="70" Foreground="White" FontWeight="Bold" Background="#9C2CF3" Height="30" Click="Button_Click"/>
+            <Button Content="Цехи" Margin="5" Width="70" Foreground="White" FontWeight="Bold" Background="#9C2CF3" Height="30" Click="Button_Click_3"/>
+            <Button Content="Должности" Margin="5" Width="70" Foreground="White" FontWeight="Bold" Background="#9C2CF3" Height="30" Click="Button_Click_2"/>
             <Button Content="Добавить" Margin="5" Width="70" Foreground="White" FontWeight="Bold" Background="#9C2CF3" Height="30" Click="Button_Click"/>
             <Button Content="Удалить" Margin="5" Width="70" Foreground="White" FontWeight="Bold" Background="#9C2CF3" Height="30"/>
         </StackPanel>

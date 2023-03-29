@@ -102,5 +102,15 @@ namespace SpecClothes
         {
             manager.MainFrame.Navigate(new PositionPage());
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            manager.MainFrame.Navigate(new PositionPage());
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            manager.MainFrame.Navigate(new DepartmentPage());
+        }
     }
 }

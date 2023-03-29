@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpecClothes.Database.DatabaseClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,28 @@ namespace SpecClothes
         public PositionPage()
         {
             InitializeComponent();
+            List<Position> del = SpecclotheContext.GetContext().Positions.ToList();
+            DGrid.ItemsSource = del;
+        }
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            manager.MainFrame.Navigate(new PositionAddPage((sender as Button).DataContext as Position));
+        }
+
+        private void DGridHotels_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            manager.MainFrame.Navigate(new PositionAddPage(null));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            manager.MainFrame.Navigate(new PositionPage());
         }
     }
 }
