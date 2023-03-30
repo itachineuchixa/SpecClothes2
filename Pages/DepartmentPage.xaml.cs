@@ -29,7 +29,7 @@ namespace SpecClothes
         }
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            manager.MainFrame.Navigate(new WorkerAddPage((sender as Button).DataContext as Employee));
+            manager.MainFrame.Navigate(new DepartmentAddPage((sender as Button).DataContext as Department));
         }
 
         private void DGridHotels_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -39,7 +39,7 @@ namespace SpecClothes
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            manager.MainFrame.Navigate(new WorkerAddPage(null));
+            manager.MainFrame.Navigate(new DepartmentAddPage(null));
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

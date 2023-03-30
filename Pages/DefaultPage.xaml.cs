@@ -34,6 +34,25 @@ namespace SpecClothes
 
         }
 
+        private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //поиск
+            string search = Search.Text;
+            if (Search.Text != null)
+            {
+                List<Delivery> del = SpecclotheContext.GetContext().Deliveries.ToList();
+                foreach (var d in del)
+                {
+                    d.ClothesIdclothesNavigation = SpecclotheContext.GetContext().Clothes.Where(x => x.Idclothes == d.ClothesIdclothes).ToList()[0];
+                    d.EmployeesIdEmployeesNavigation = SpecclotheContext.GetContext().Employees.Where(x => x.IdEmployees == d.EmployeesIdEmployees).ToList()[0];
+                }
+                DGrid.ItemsSource = del.
+                    Where(x => x.ClothesIdclothesNavigation.Clothe1.Contains(search)
+                    || x.EmployeesIdEmployeesNavigation.Fio.Contains(search)
+                    || x.Datato.Contains(search)
+                    || x.Datatrade.ToString().Contains(search)).ToList();
+            }
+        }
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
 
@@ -44,5 +63,9 @@ namespace SpecClothes
 
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            manager.MainFrame.Navigate(new DeliveryAddPage(null));
+        }
     }
 }

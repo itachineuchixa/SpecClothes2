@@ -39,7 +39,7 @@
                 </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn    Header="Цех" DisplayMemberBinding="{Binding Posi}" Width="Auto"/>
+                        <GridViewColumn    Header="Должность" DisplayMemberBinding="{Binding Posi}" Width="Auto"/>
                         <GridViewColumn>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
