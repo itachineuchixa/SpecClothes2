@@ -88,5 +88,10 @@ namespace SpecClothes
 
 
         }
+
+        private void Ochjet_click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
