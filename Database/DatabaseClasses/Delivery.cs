@@ -12,7 +12,7 @@ public partial class Delivery
 
     public string Datatrade { get; set; } = null!;
 
-    public long Price { get; set; }
+    public double Price { get; set; }
 
     public long ClothesIdclothes { get; set; }
 

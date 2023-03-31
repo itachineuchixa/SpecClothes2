@@ -55,7 +55,7 @@ namespace SpecClothes
         }
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            manager.MainFrame.Navigate(new DeliveryAddPage((sender as Button).DataContext as Delivery));
         }
 
         private void DGridHotels_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -66,6 +66,27 @@ namespace SpecClothes
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             manager.MainFrame.Navigate(new DeliveryAddPage(null));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {// удаление нескольких пользователей
+            var usersForRemoving = DGrid.SelectedItems.Cast<Delivery>().ToList();
+            if (MessageBox.Show($"Удалить {usersForRemoving.Count()} записей?",
+                "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+
+                try
+                {
+                    SpecclotheContext.GetContext().Deliveries.RemoveRange(usersForRemoving);
+                    SpecclotheContext.GetContext().SaveChanges();
+                    MessageBox.Show("Данные удалены");
+                    DGrid.ItemsSource = SpecclotheContext.GetContext().Deliveries.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+
+
         }
     }
 }

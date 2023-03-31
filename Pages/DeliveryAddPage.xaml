@@ -28,28 +28,13 @@
                    Grid.Row="0"
                    Grid.Column="0"
                    Margin="5"/>
-        <TextBlock Text="Дата замены"
-                                      Foreground="White"
-                   HorizontalAlignment="Right"
-                   VerticalAlignment="Center"
-                   Grid.Row="1"
-                   Grid.Column="0"
-                   Margin="5"/>
-        <TextBlock Text="Сумма"
-                   
-                   
-                                      Foreground="White"
-                   HorizontalAlignment="Right"
-                   VerticalAlignment="Center"
-                   Grid.Row="2"
-                   Grid.Column="0"/>
         <TextBlock Text="Одежда"
                    
                    
                                       Foreground="White"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Center"
-                   Grid.Row="3"
+                   Grid.Row="1"
                    Grid.Column="0"/>
         <TextBlock Text="Работник"
                    
@@ -57,7 +42,7 @@
                                       Foreground="White"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Center"
-                   Grid.Row="4"
+                   Grid.Row="2"
                    Grid.Column="0"/>
         <TextBox Name="datato"
                  Background="#9C2CF3"
@@ -67,30 +52,14 @@
                  Grid.Row="0"
                  Height="40"
                    Grid.Column="1"/>
-        <TextBox Name="datatrade"
-                 Background="#9C2CF3"
-                 Foreground="White"
-                 Text="{Binding Datatrade}"
-                 Width="300"
-                 Grid.Row="1"
-                 Height="40"
-                   Grid.Column="1"/>
-        <TextBox Name="summa"
-                 Background="#9C2CF3"
-                 Foreground="White"
-                 Text="{Binding Fio}"
-                 Width="300"
-                 Grid.Row="2"
-                 Height="40"
-                   Grid.Column="1"/>
         <ComboBox Name="clothe"
                   
-                  Grid.Row="3"
+                  Grid.Row="1"
                   Grid.Column="1" Width="300" Background="#9C2CF3"
                   SelectedValue="{Binding ClothesIdclothes}"/>
         <ComboBox Name="employee"
                   
-                  Grid.Row="4"
+                  Grid.Row="2"
                   Grid.Column="1" Width="300" Background="#9C2CF3"
                   SelectedValue="{Binding EmployeesIdEmployees}"/>
 

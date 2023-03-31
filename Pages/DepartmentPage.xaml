@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Content="Добавить" Margin="5" Width="70" Foreground="White" FontWeight="Bold" Background="#9C2CF3" Height="30" Click="Button_Click"/>
-            <Button Content="Удалить" Margin="5" Width="70" Foreground="White" FontWeight="Bold" Background="#9C2CF3" Height="30"/>
+            <Button Content="Удалить" Margin="5" Width="70" Foreground="White" FontWeight="Bold" Background="#9C2CF3" Height="30" Click="Button_Click_3"/>
         </StackPanel>
         <Grid>
             <ListView  Background="#1A202C" Foreground="GhostWhite" BorderBrush="Wheat" Name="DGrid"  SelectionChanged="DGridHotels_SelectionChanged">

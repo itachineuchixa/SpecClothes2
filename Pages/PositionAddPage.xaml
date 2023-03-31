@@ -26,12 +26,26 @@
                    VerticalAlignment="Center"
                    Grid.Row="2"
                    Grid.Column="0"/>
+        <TextBlock Text="Скидка"
+                                      Foreground="White"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   Grid.Row="3"
+                   Grid.Column="0"/>
         <TextBox Name="TxtFirstName"
                  Background="#9C2CF3"
                  Foreground="White"
                  Text="{Binding Posi}"
                  Width="300"
                  Grid.Row="2"
+                 Height="40"
+                   Grid.Column="3"/>
+        <TextBox Name="Dis"
+                 Background="#9C2CF3"
+                 Foreground="White"
+                 Text="{Binding Discount}"
+                 Width="300"
+                 Grid.Row="3"
                  Height="40"
                    Grid.Column="3"/>
 

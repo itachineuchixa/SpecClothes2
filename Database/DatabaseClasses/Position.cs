@@ -7,7 +7,7 @@ public partial class Position
 {
     public long Idposition { get; set; }
 
-    public long Discount { get; set; }
+    public double Discount { get; set; }
 
     public string Posi { get; set; } = null!;
 

@@ -9,9 +9,9 @@ public partial class Clothe
 
     public string Clothe1 { get; set; } = null!;
 
-    public long Price { get; set; }
+    public double Price { get; set; }
 
-    public long Term { get; set; }
+    public double Term { get; set; }
 
     public long VariableIdVariable { get; set; }
 
