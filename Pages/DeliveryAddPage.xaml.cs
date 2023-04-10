@@ -39,37 +39,45 @@ namespace SpecClothes
         }
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-
-            _currentdelivery.ClothesIdclothesNavigation = SpecclotheContext.GetContext().Clothes.Where(x => x.Idclothes == int.Parse(clothe.SelectedValue.ToString())).ToList()[0];
-            _currentdelivery.EmployeesIdEmployeesNavigation = SpecclotheContext.GetContext().Employees.Where(x => x.IdEmployees == int.Parse(employee.SelectedValue.ToString())).ToList()[0];
-            _currentdelivery.EmployeesIdEmployeesNavigation.PositionIdpositionNavigation = SpecclotheContext.GetContext().Positions.Where(x => x.Idposition == _currentdelivery.EmployeesIdEmployeesNavigation.PositionIdposition).ToList()[0];
-            StringBuilder error = new StringBuilder(); //объект для сообщения об ошибке
-            _currentdelivery.Price = _currentdelivery.ClothesIdclothesNavigation.Price - (_currentdelivery.ClothesIdclothesNavigation.Price * (_currentdelivery.EmployeesIdEmployeesNavigation.PositionIdpositionNavigation.Discount / 100));
-            _currentdelivery.Datatrade =Convert.ToDateTime(_currentdelivery.Datato).AddMonths(Convert.ToInt32(_currentdelivery.ClothesIdclothesNavigation.Term)).Date.ToString("dd.MM.yyyy");
-            //проверка полей объекта
-            if (string.IsNullOrWhiteSpace(_currentdelivery.Datato))
-                error.AppendLine("Укажите Дату выдачи");
-            if (string.IsNullOrWhiteSpace(_currentdelivery.Datatrade.ToString()))
-                error.AppendLine("Укажите Дату замены");
-            if (error.Length > 0)
-            {
-                MessageBox.Show(error.ToString());
-                return;
-            }
-            //если пользователь новый
-            if (_currentdelivery.Iddelivery == 0)
-                SpecclotheContext.GetContext().Deliveries.Add(_currentdelivery); //добавить в контекст
             try
             {
-                SpecclotheContext.GetContext().SaveChanges(); // сохранить изменения
-                                                              // dbISP19AEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                MessageBox.Show("Данные сохранены");
-                manager.MainFrame.Navigate(new WorkerPage());
+                _currentdelivery.ClothesIdclothesNavigation = SpecclotheContext.GetContext().Clothes.Where(x => x.Idclothes == int.Parse(clothe.SelectedValue.ToString())).ToList()[0];
+                _currentdelivery.EmployeesIdEmployeesNavigation = SpecclotheContext.GetContext().Employees.Where(x => x.IdEmployees == int.Parse(employee.SelectedValue.ToString())).ToList()[0];
+                _currentdelivery.EmployeesIdEmployeesNavigation.PositionIdpositionNavigation = SpecclotheContext.GetContext().Positions.Where(x => x.Idposition == _currentdelivery.EmployeesIdEmployeesNavigation.PositionIdposition).ToList()[0];
+                StringBuilder error = new StringBuilder(); //объект для сообщения об ошибке
+                _currentdelivery.Price = _currentdelivery.ClothesIdclothesNavigation.Price - (_currentdelivery.ClothesIdclothesNavigation.Price * (_currentdelivery.EmployeesIdEmployeesNavigation.PositionIdpositionNavigation.Discount / 100));
+                _currentdelivery.Datatrade = Convert.ToDateTime(_currentdelivery.Datato).AddMonths(Convert.ToInt32(_currentdelivery.ClothesIdclothesNavigation.Term)).Date.ToString("dd.MM.yyyy");
+                //проверка полей объекта
+                if (string.IsNullOrWhiteSpace(_currentdelivery.Datato))
+                    error.AppendLine("Укажите Дату выдачи");
+                if (string.IsNullOrWhiteSpace(_currentdelivery.Datatrade.ToString()))
+                    error.AppendLine("Укажите Дату замены");
+                if (error.Length > 0)
+                {
+                    MessageBox.Show(error.ToString());
+                    return;
+                }
+                //если пользователь новый
+                if (_currentdelivery.Iddelivery == 0)
+                    SpecclotheContext.GetContext().Deliveries.Add(_currentdelivery); //добавить в контекст
+                try
+                {
+                    SpecclotheContext.GetContext().SaveChanges(); // сохранить изменения
+                                                                  // dbISP19AEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                    MessageBox.Show("Данные сохранены");
+                    manager.MainFrame.Navigate(new WorkerPage());
 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show($"Введите данные!",
+                "Внимание", MessageBoxButton.OK);
+
             }
         }
     }

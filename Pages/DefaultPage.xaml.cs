@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Office.Interop.Word;
 using SpecClothes.Database.DatabaseClasses;
 
 namespace SpecClothes
@@ -19,7 +21,7 @@ namespace SpecClothes
     /// <summary>
     /// Логика взаимодействия для DefaultPage.xaml
     /// </summary>
-    public partial class DefaultPage : Page
+    public partial class DefaultPage : System.Windows.Controls.Page
     {
         public DefaultPage()
         {
@@ -91,7 +93,93 @@ namespace SpecClothes
 
         private void Ochjet_click(object sender, RoutedEventArgs e)
         {
+            List<Delivery> rem = DGrid.ItemsSource as List<Delivery>;
+
+            var application = new Microsoft.Office.Interop.Word.Application();
+            Microsoft.Office.Interop.Word.Document document = application.Documents.Add();
+            Microsoft.Office.Interop.Word.Paragraph p = document.Paragraphs.Add();
+            p.Range.Text += "";
+            p.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
+            Microsoft.Office.Interop.Word.Paragraph paragraph2 = document.Paragraphs.Add();
+            // Add report header
+            paragraph2.Range.Text = "Типовая межотраслевая форма № МБ-7\nУтверждена постановлением Госкомстата России\nот 30.10.97 №71а";
+            paragraph2.Alignment = WdParagraphAlignment.wdAlignParagraphLeft;
+            Microsoft.Office.Interop.Word.Paragraph paragraph = document.Paragraphs.Add();
+            paragraph.Range.Text = "Код \r\nпо ОКУД \r\n";
+            paragraph.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+            paragraph.Range.Bold = 1;
+            Microsoft.Office.Interop.Word.Paragraph paragraph3 = document.Paragraphs.Add();
+            paragraph3.Range.Text = "ВЕДОМОСТЬ УЧЕТА ВЫДАЧИ (ВОЗВРАТА) СПЕЦОДЕЖДЫ, СПЕЦОБУВИ И  \r\nПРЕДОХРАНИТЕЛЬНЫХ ПРИСПОСОБЛЕНИЙ \r\n";
+            paragraph3.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+            paragraph3.Range.Bold = 0;
+
+            Microsoft.Office.Interop.Word.Paragraph tableparagraph2 = document.Paragraphs.Add();
+            Microsoft.Office.Interop.Word.Range tableRange2 = tableparagraph2.Range;
+            Microsoft.Office.Interop.Word.Table infoTable2 = document.Tables.Add(tableRange2, 2, 4);
+            infoTable2.Borders.InsideLineStyle = infoTable2.Borders.OutsideLineStyle
+                    = Microsoft.Office.Interop.Word.WdLineStyle.wdLineStyleSingle;
+            /*            infoTable.Range.Cells.VerticalAlignment
+                                = Microsoft.Office.Interop.Word.WdCellVerticalAlignment.wdCellAlignVerticalCenter;*/
+            Microsoft.Office.Interop.Word.Range cellRange2;
+            cellRange2 = infoTable2.Cell(1, 1).Range;
+            cellRange2.Text = "Номер документа";
+            cellRange2 = infoTable2.Cell(1, 2).Range;
+            cellRange2.Text = "Месяц, год";
+            cellRange2 = infoTable2.Cell(1, 3).Range;
+            cellRange2.Text = "Код вида операции";
+            cellRange2 = infoTable2.Cell(1, 4).Range;
+            cellRange2.Text = "Предприятие";
+
+            infoTable2.Rows[1].Range.Bold = 1;
+            tableRange2.Borders.Enable = 1;
+            tableRange2.Columns.AutoFit();
+
+            Microsoft.Office.Interop.Word.Paragraph p2 = document.Paragraphs.Add();
+            p2.Range.Text += "";
+
+            Microsoft.Office.Interop.Word.Paragraph tableparagraph = document.Paragraphs.Add();
+            Microsoft.Office.Interop.Word.Range tableRange = tableparagraph.Range;
+            Microsoft.Office.Interop.Word.Table infoTable = document.Tables.Add(tableRange, rem.Count+1, 5);
+            infoTable.Borders.InsideLineStyle = infoTable.Borders.OutsideLineStyle
+                    = Microsoft.Office.Interop.Word.WdLineStyle.wdLineStyleSingle;
+            infoTable.Range.Cells.VerticalAlignment
+                    = Microsoft.Office.Interop.Word.WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+            Microsoft.Office.Interop.Word.Range cellRange;
+            cellRange = infoTable.Cell(1, 1).Range;
+            cellRange.Text = "Дата выдачи";
+            cellRange = infoTable.Cell(1, 2).Range;
+            cellRange.Text = "Дата замены";
+            cellRange = infoTable.Cell(1, 3).Range;
+            cellRange.Text = "Наименование";
+            cellRange = infoTable.Cell(1, 4).Range;
+            cellRange.Text = "Сумма";
+            cellRange = infoTable.Cell(1, 5).Range;
+            cellRange.Text = "Фамилия, имя, отчество";
+
+            infoTable.Rows[1].Range.Bold = 1;
+
+            for (int i = 0; i < rem.Count; i++)
+            {
+                cellRange = infoTable.Cell(i + 2, 1).Range;
+                cellRange.Text = rem[i].Datato.ToString();
+                cellRange = infoTable.Cell(i + 2, 2).Range;
+                cellRange.Text = rem[i].Datatrade.ToString();
+                cellRange = infoTable.Cell(i + 2, 3).Range;
+                cellRange.Text = rem[i].ClothesIdclothesNavigation.Clothe1.ToString();
+                cellRange = infoTable.Cell(i + 2, 4).Range;
+                cellRange.Text = rem[i].Price.ToString();
+                cellRange = infoTable.Cell(i + 2, 5).Range;
+                cellRange.Text = rem[i].EmployeesIdEmployeesNavigation.Fio.ToString();
+            }
+            tableRange.Borders.Enable = 1;
+            tableRange.Columns.AutoFit();
+            Microsoft.Office.Interop.Word.Paragraph p3 = document.Paragraphs.Add();
+            p3.Range.Text += "Материально ответственное лицо __________________________________";
+            Microsoft.Office.Interop.Word.Paragraph p4 = document.Paragraphs.Add();
+            p4.Range.Text += "Печатать с оборотом без заголовочной части. Подпись печатать на  обороте.";
+
+            application.Visible = true;
+        }
 
         }
-    }
 }

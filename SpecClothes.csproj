@@ -16,6 +16,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <COMReference Include="WordAdapterLib">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>12</VersionMajor>
+      <Guid>cb7a8a3c-917e-4e4c-b731-667a63eb2803</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>6</VersionMinor>
+      <VersionMajor>8</VersionMajor>
+      <Guid>00020905-0000-0000-c000-000000000046</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\1455554770_line-74_icon-icons.com_53368.png" />
     <Resource Include="Resources\builder-22_icon-icons.com_60368.png" />
     <Resource Include="Resources\Image1.png" />
